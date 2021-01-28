@@ -15,7 +15,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { MatOptionModule } from '@angular/material/core';
 import { MatSelectModule} from '@angular/material/select';
 import { MatSlideToggleModule, MatSlideToggle } from '@angular/material/slide-toggle';
-import { MatCardModule } from '@angular/material/card'
+import { MatCardModule } from '@angular/material/card';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,8 @@ import { MatCardModule } from '@angular/material/card'
     // MatOptionModule,
     MatInputModule,
     MatSlideToggleModule,
+    MatButtonModule,
+    MatPaginatorModule,
     // MatSlideToggle,
     ReactiveFormsModule,
     MatCardModule

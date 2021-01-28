@@ -1,24 +1,21 @@
 .wrapper {
-    width: 100%;
-    background-color: #f7f7ff;
-    border-radius: 12px;
-
+  width: 100%;
+  height: 96vh;
+  background-color: #f7f7ff;
+  border-radius: 12px;
 }
 
 .container {
   padding-left: 3.4rem;
 }
 .fst {
-    color: #000;
+  color: #000;
 
 }
 div h3 {
-    font-weight: 700;
-    font-size: 1.3rem;
+  font-weight: 700;
+  font-size: 1.3rem;
 }
-
-/* div p  */
-
 
 .mat-form-field {
   color: #95959a;
@@ -34,7 +31,6 @@ div h3 {
 }
 
 figure {
-  
   position: absolute;
   /* top: 1rem; */
   /* bottom: .0.7rem; */
@@ -55,16 +51,29 @@ img {
 ul {
   text-decoration: none;
 }
- li {
-   display: inline;
-   margin-right: 7rem;
+/* use this css to change the space between buttons */
+ span {
+   margin-right: 2rem;  
  }
 
- li:first-child {
-  margin-left: 3.7rem;
+ span:first-child {
+  margin-left: 6rem;
  }
 
  .mat-icon {
    font-size: .9rem;
-   
  }
+
+ button {
+   margin-left: 10rem;
+   border-radius: 10%;
+ }
+
+ button .mat-icon {
+   font-size: 1.6rem !important;
+ }
+
+.mat-card {
+  margin-bottom: 12px;
+}
+ 
