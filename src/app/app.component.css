@@ -1,0 +1,76 @@
+.main {
+    background-color: #262a41;
+    height: 100vh;
+    position: relative;
+}
+
+.wrapper {
+    padding-left: 10rem; 
+    color: #fff; 
+   
+}
+
+.greeting{
+    text-transform: capitalize;
+    font-weight: 100;
+    font-size: 2rem;
+    padding-top: 12rem;
+    /* padding-left: 9rem;   */
+}
+
+.greeting span {
+    font-weight: 500;
+}
+
+.info {
+    /* padding-left: 9rem; */
+    font-weight: 300;
+    color: #a4a6af;
+}
+
+input {
+    background-color: #3c3f54;
+    /* margin: .5rem 0 0 17rem; */
+    height: 3.2rem;
+    border-radius: 20px;
+    outline: none; 
+}
+
+.user {
+    margin-top: 1rem;
+    /* padding-left: 17.4rem;  */
+    font-weight: 200;
+    color: #a4a6af;
+    font-weight: 400;
+}
+
+button {
+    margin-right: 1.2rem;
+    border-radius: 10px;
+    margin-top: .8rem;
+}
+
+button:focus, button:active {
+    cursor: pointer;
+    width: 4rem;
+    height: 4rem;
+    transition: all;
+}
+small {
+    position: relative;
+    top: 3rem;
+    left: -4.7rem;
+    font-size: .6rem;
+    font-weight: 400;
+    color: #a4a6af;
+}
+
+.router {
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+    width: 50%;
+    /* bottom: 0; */
+    /* right: 8rem; */
+}
+

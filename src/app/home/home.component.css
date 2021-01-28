@@ -1,0 +1,70 @@
+.wrapper {
+    width: 100%;
+    background-color: #f7f7ff;
+    border-radius: 12px;
+
+}
+
+.container {
+  padding-left: 3.4rem;
+}
+.fst {
+    color: #000;
+
+}
+div h3 {
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+/* div p  */
+
+
+.mat-form-field {
+  color: #95959a;
+  margin-right: 4rem;
+}
+
+.mat-slide-toggle {
+  color: #95959a;
+}
+
+.mat-card {
+  max-width: 650px;
+}
+
+figure {
+  
+  position: absolute;
+  /* top: 1rem; */
+  /* bottom: .0.7rem; */
+  top: .7rem;
+}
+
+.mat-card-title, .mat-card-subtitle {
+  margin-left: 5rem;
+}
+
+img {
+  width: 4rem;
+  border: 2px solid black;
+  padding: 4px;
+  border-radius: 60%;
+}
+
+ul {
+  text-decoration: none;
+}
+ li {
+   display: inline;
+   margin-right: 7rem;
+ }
+
+ li:first-child {
+  margin-left: 3.7rem;
+ }
+
+ .mat-icon {
+   font-size: .9rem;
+   
+ }
