@@ -1,5 +1,5 @@
-# Dashboard
->This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.6.
+## Dashboard
+
 
 ## Table of contents
 * [General info](#general-info)
@@ -19,7 +19,7 @@ This is a simple user dashboard. It generate users information and filter accord
 ## Technologies
 * Angular  - version 11.0.6.
 * Materian Angular  - version 11.1.0
-* Bootstrap - version 3.0
+* Bootstrap - version 4.6.0
 
 ## Setup
 * Download the source code using git or else download and unzip the zip file.
@@ -30,13 +30,8 @@ This is a simple user dashboard. It generate users information and filter accord
 
 ## Code Examples
 
-`<div class="main">
-    <div class="wrapper">
-        <div class="container-fluid">
-            <p class="greeting">Hello, <span>Emerald</span></p>
-            <p class="info">Welcome to your dashboard, kindly sort through the user base</p>
-        </div>
-        <form class="form-inline" [formGroup]="SearchForm">
+
+        `<form class="form-inline" [formGroup]="SearchForm">
             <input formControlName="search" class="form-control" size="44"  type="search" placeholder="Find a user" aria-label="Search">
         </form>
         <p class="user mt-3">Show Users</p>
