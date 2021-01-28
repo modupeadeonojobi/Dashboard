@@ -35,7 +35,6 @@ This is a simple user dashboard. It generate users information and filter accord
             <p class="greeting">Hello, <span>Emerald</span></p>
             <p class="info">Welcome to your dashboard, kindly sort through the user base</p>
         </div>
-    
         <form class="form-inline" [formGroup]="SearchForm">
             <input formControlName="search" class="form-control" size="44"  type="search" placeholder="Find a user" aria-label="Search">
         </form>
