@@ -29,6 +29,7 @@ This is a simple user dashboard. It generate users information and filter accord
 * Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code Examples
+
 `<div class="main">
     <div class="wrapper">
         <div class="container-fluid">
