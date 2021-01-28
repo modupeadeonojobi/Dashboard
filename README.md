@@ -1,5 +1,5 @@
 ## Dashboard
-
+>A simple dashboard built with Angular.
 
 ## Table of contents
 * [General info](#general-info)
