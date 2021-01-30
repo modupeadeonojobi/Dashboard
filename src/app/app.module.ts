@@ -18,11 +18,15 @@ import { MatSelectModule} from '@angular/material/select';
 import { MatSlideToggleModule, MatSlideToggle } from '@angular/material/slide-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { FemaleComponent } from './female/female.component';
+import { MaleComponent } from './male/male.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    FemaleComponent,
+    MaleComponent,
   ],
   imports: [
     BrowserModule,

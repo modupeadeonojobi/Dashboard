@@ -1,3 +1,5 @@
+import { FemaleComponent } from './female/female.component';
+import { MaleComponent } from './male/male.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -7,8 +9,9 @@ const routes: Routes = [
     path: '',
   children: [
     {path: '', pathMatch: 'full', redirectTo: 'home' },
-    {path: 'home', component: HomeComponent}
-  
+    {path: 'home', component: HomeComponent},
+    {path: 'male', component: MaleComponent},
+    {path: 'female', component: FemaleComponent}  
   ]
 }
 ];

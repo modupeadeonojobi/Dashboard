@@ -1,7 +1,8 @@
 import { ApiService } from './../apiservice.service';
-import { environment } from './../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { finalize } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -10,42 +11,78 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  users = {};
-  options: FormGroup;
-  colorControl = new FormControl('primary');
-  fontSizeControl = new FormControl(16, Validators.min(10));
 
-  constructor(fb: FormBuilder, private service: ApiService) { 
-    this.options = fb.group({
-      color: this.colorControl,
-      fontSize: this.fontSizeControl,
-    });
+  _searchTerm: any;
+
+  users: any;
+  allUsers:any[] = [];
+  searchForm: FormGroup | undefined;
+  // colorControl = new FormControl('primary');
+  fontSizeControl = new FormControl(16, Validators.min(10));
+  dataItem: any;
+
+  constructor(private formbuilder: FormBuilder, private service: ApiService) { 
+    this._searchTerm = localStorage.getItem('searchTerm');
+    this.getInfo(this._searchTerm, true);
+    // this.options = fb.group({
+    //   color: this.colorControl,
+    //   fontSize: this.fontSizeControl,
+    // });
   }
 
   ngOnInit(): void {
-    for(let i = 1; i <= 2; i++){
-      this.service.get_('')
+    this.doSearch();
+    this.initForm();
+  }
+
+
+  initForm(): any{
+    return this.searchForm = this.formbuilder.group({
+      searchTerm: ['', Validators.required],
+    });
+  }
+
+  get searchTerm(): string {
+    return this.searchForm?.controls.searchTerm.value;
+  }
+
+  set searchTerm(_searchTerm: string) {
+    this.searchForm?.controls.searchTerm.setValue(_searchTerm);
+  }
+
+  doSearch(): any {
+   
+    for(let i = 1; i <= 3; i++){
+      this.service.get_(environment.url)
       .subscribe((data: any) => {
-        this.users = data.results;
-        console.log(this.users)
-      
+        this.allUsers.push(data.results[0])
       })
     }
   }
 
-  
+  get dataItem_() {
+    return this.allUsers;
+  }
 
-// click(): any {
-//   this.service.get_('')
-//     .subscribe((data: any) => {
-//       this.users = data.results;
-//       console.log(data)
-//     })
-// }
 
-  getFontSize() {
-    return Math.max(10, this.fontSizeControl.value);
+  getInfo(userSearchTerm?: any, isFirstTime?: boolean): any{
+    let searchTerm = localStorage.getItem('searchTerm');
     
+    if(userSearchTerm === searchTerm && !isFirstTime) {
+      this.dataItem = localStorage.getItem('searchData');
+      return;
+    }
+    else{
+      this.doSearch();
+    }
+  }
+
+  handleSearch(): any {
+    this.getInfo(this.searchTerm, false)
+  }
+  
+  getFontSize() {
+    return Math.max(10, this.fontSizeControl.value); 
   }
 
 }

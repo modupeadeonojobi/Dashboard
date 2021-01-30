@@ -1,12 +1,12 @@
 <div class="wrapper">
     <div class="container">
         <div class="fst">
-            <h3 class="pt-4">User List</h3>
+            <h3 class="pt-4">Female List</h3>
             <p>Filter by</p>
         </div>
-        <mat-form-field floatLabel="auto" appearance="standard" (ngSubmit)="handleSearch()" [formGroup]="searchForm">
+        <mat-form-field floatLabel="auto" appearance="standard">
             <mat-label>Search</mat-label>
-            <input matInput formControlName="searchTerm">
+            <input matInput>
             <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
         <mat-form-field>
@@ -18,22 +18,21 @@
         </mat-form-field>
         <mat-slide-toggle>Show Country</mat-slide-toggle>
 
-        <mat-card *ngFor="let item of allUsers">
+        <mat-card>
             <mat-card-header>
                 <figure>                 
-                    <img src='{{item.picture.medium}}' alt="">
+                    <img src='' alt="">
                 </figure>
-                <mat-card-title>  {{item.name.first}} {{item.name.last}}</mat-card-title>
-                <mat-card-subtitle> <i>{{item.location.street.number}} {{item.location.street.name}}, {{item.location.city}}, {{item.location.state}}, {{item.location.country}}
-                </i>
+                <mat-card-title>Mary White</mat-card-title>
+                <mat-card-subtitle>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;iiiiiiiiiiiiiiiiihhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh <i> </i>
                 </mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
                 <span>
-                    <mat-icon>email</mat-icon> {{item.email}}
+                    <mat-icon>email</mat-icon>000o8ybgdrtd 
                 </span>
                 <span>
-                    <mat-icon>phone</mat-icon>{{item.email}}
+                    <mat-icon>phone</mat-icon>iyfgydtfygftf
                 </span>
                 <button mat-mini-fab color="accent">
                     <mat-icon>arrow_forward</mat-icon>

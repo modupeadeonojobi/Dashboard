@@ -5,8 +5,8 @@
             <p class="info">Welcome to your dashboard, kindly sort through the user base</p>
         </div>
     
-        <form class="form-inline" [formGroup]="SearchForm">
-            <input formControlName="search" class="form-control" size="44"  type="search" placeholder="Find a user" aria-label="Search">
+        <form class="form-inline" (ngSubmit)="onSubmit()" [formGroup]="searchForm">
+            <input formControlName="searchItem" class="form-control" size="44"  type="search" placeholder="Find a user" aria-label="Search">
         </form>
        
         <p class="user mt-3">Show Users</p>
