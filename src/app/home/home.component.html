@@ -4,21 +4,25 @@
             <h3 class="pt-4">User List</h3>
             <p>Filter by</p>
         </div>
-        <mat-form-field floatLabel="auto" appearance="standard" (ngSubmit)="handleSearch()" [formGroup]="searchForm">
+        <!-- (ngSubmit)="handleSearch()" -->
+        <mat-form-field floatLabel="auto" appearance="standard"  [formGroup]="searchForm">
             <mat-label>Search</mat-label>
-            <input matInput formControlName="searchTerm">
+            <input matInput formControlName="search">
             <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
         <mat-form-field>
             <mat-label>Country</mat-label>
-            <mat-select>
-                <mat-option value="nigeria">Nigeria</mat-option>
-                <mat-option value="america">America</mat-option>
+            <mat-select (change)="onSelectionChange($event)" formControlName="country">
+                <div *ngFor="let item of allUsers">
+                    <mat-option value="{{item.location.country}}">{{item.location.country}}</mat-option>
+
+                </div>
+                <!-- <mat-option value="america">America</mat-option> -->
             </mat-select>
         </mat-form-field>
         <mat-slide-toggle>Show Country</mat-slide-toggle>
 
-        <mat-card *ngFor="let item of allUsers">
+        <mat-card *ngFor="let item of allUsers | filter: search1 | filter: searchTerm">
             <mat-card-header>
                 <figure>                 
                     <img src='{{item.picture.medium}}' alt="">

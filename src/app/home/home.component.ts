@@ -16,14 +16,16 @@ export class HomeComponent implements OnInit {
 
   users: any;
   allUsers:any[] = [];
-  searchForm: FormGroup | undefined;
+  searchForm!: FormGroup;
   // colorControl = new FormControl('primary');
   fontSizeControl = new FormControl(16, Validators.min(10));
   dataItem: any;
+  country: any;
 
   constructor(private formbuilder: FormBuilder, private service: ApiService) { 
     this._searchTerm = localStorage.getItem('searchTerm');
-    this.getInfo(this._searchTerm, true);
+    // console.log(this._searchTerm)
+    // this.getInfo(this._searchTerm, true);
     // this.options = fb.group({
     //   color: this.colorControl,
     //   fontSize: this.fontSizeControl,
@@ -38,51 +40,57 @@ export class HomeComponent implements OnInit {
 
   initForm(): any{
     return this.searchForm = this.formbuilder.group({
-      searchTerm: ['', Validators.required],
+      search: ['', Validators.required],
     });
   }
 
-  get searchTerm(): string {
-    return this.searchForm?.controls.searchTerm.value;
+  get search1(): string {
+    return this.searchForm?.controls.search.value;
   }
 
   set searchTerm(_searchTerm: string) {
     this.searchForm?.controls.searchTerm.setValue(_searchTerm);
   }
 
-  doSearch(): any {
-   
-    for(let i = 1; i <= 3; i++){
-      this.service.get_(environment.url)
+  doSearch(): any { 
+    for(let i = 1; i <= 2; i++){
+      this.service.get_('')
       .subscribe((data: any) => {
         this.allUsers.push(data.results[0])
       })
     }
   }
 
-  get dataItem_() {
-    return this.allUsers;
+//   this.country = new FormGroup({
+//     firstName: new FormControl()
+//  }); 
+
+  onSelectionChange(event: any): any {
+    console.log(event.target)
+    // this.status = event.target.value || "all";
   }
 
 
-  getInfo(userSearchTerm?: any, isFirstTime?: boolean): any{
-    let searchTerm = localStorage.getItem('searchTerm');
+
+  // getInfo(userSearchTerm?: any, isFirstTime?: boolean): any{
+  //   let searchTerm = localStorage.getItem('searchTerm');
     
-    if(userSearchTerm === searchTerm && !isFirstTime) {
-      this.dataItem = localStorage.getItem('searchData');
-      return;
-    }
-    else{
-      this.doSearch();
-    }
-  }
+  //   if(userSearchTerm === searchTerm && !isFirstTime) {
+  //     this.dataItem = localStorage.getItem('searchData');
+  //     return;
+  //   }
+  //   else{
+  //     this.doSearch();
+  //   }
+  // }
 
-  handleSearch(): any {
-    this.getInfo(this.searchTerm, false)
-  }
+  // handleSearch(): any {
+  //   this.getInfo(this.search, false)
+  // }
   
   getFontSize() {
     return Math.max(10, this.fontSizeControl.value); 
   }
+
 
 }

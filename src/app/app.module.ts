@@ -20,6 +20,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FemaleComponent } from './female/female.component';
 import { MaleComponent } from './male/male.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { MaleComponent } from './male/male.component';
     HomeComponent,
     FemaleComponent,
     MaleComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,
