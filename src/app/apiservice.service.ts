@@ -23,9 +23,9 @@ export class ApiService {
         map(response => {
           return response;
         }),
-        catchError(error => {
-          return this.handleError(error);
-        })
+        // catchError(error => {
+        //   return this.handleError(error);
+        // })
       );
     }
     else {
@@ -33,9 +33,9 @@ export class ApiService {
         map(response => {
           return response;
         }),
-        catchError(error => {
-          return this.handleError(error);
-        })
+        // catchError(error => {
+        //   return this.handleError(error);
+        // })
       );
     }
   }

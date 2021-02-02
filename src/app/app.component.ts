@@ -38,7 +38,8 @@ export class AppComponent implements OnInit {
       const searchItem = this.searchForm.controls.searchItem.value;
       localStorage.setItem('searchTerm', JSON.stringify(searchItem));
       this.searchForm.reset();
-      this.router.navigate(['/home']);
+      location.reload()
+      // this.router.navigate(['/home']);
       return
     }
   }

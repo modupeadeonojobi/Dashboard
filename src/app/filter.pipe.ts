@@ -16,7 +16,9 @@ export class FilterPipe implements PipeTransform {
     searchTerm = searchTerm.toLowerCase();
 
     return allUsers.filter(it => {
-      return it.name.first.toLowerCase().includes(searchTerm) || it.location.country.toLowerCase().includes(searchTerm)});
+      return it.name.first.toLowerCase().includes(searchTerm) 
+      || it.name.last.toLowerCase().includes(searchTerm) 
+      || it.location.country.toLowerCase().includes(searchTerm)});
 // console.log(allUsers)
 //       allUsers.forEach((it, index) => 
 //          console.log(index+1+" "+ it)
