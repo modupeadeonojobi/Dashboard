@@ -1,3 +1,4 @@
+import { SharedService } from './../shared.service';
 import { ApiService } from './../apiservice.service';
 import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -23,18 +24,32 @@ export class HomeComponent implements OnInit {
   disableSelect = new FormControl(false);
   allCountry: any[] = [];
 
-  @Input() public found: string;
+  fromAppSearch: any;
 
-  constructor(private formbuilder: FormBuilder, private service: ApiService) {
+
+  constructor(private sharedservice: SharedService, private formbuilder: FormBuilder, private service: ApiService) {
     this._searchTerm = localStorage.getItem('searchTerm');
-    this.found = this._searchTerm;
-    console.log(this.found, 'eki');
-
   }
 
   ngOnInit(): void {
     this.doSearch();
     this.initForm();
+    this.sharedservice.teacherMessage$
+      .subscribe(message => {
+        this.fromAppSearch = message;
+      //   if (this.fromAppSearch === 'female') {
+      //    this.allUsers = this.allUsers.filter(r =>{return r.gender ==='female'})
+      //     this.allUsersLocal = this.allUsers;
+      //   } 
+      //   if (this.fromAppSearch === 'male') {
+      //     this.allUsers = this.allUsers.filter(t =>{return t.gender ==='male'})
+      //     this.allUsersLocal = this.allUsers;
+      //   } 
+      //   if (this.fromAppSearch = message) {
+      //     this.allUsersLocal = this.allUsers;
+
+      //   }
+      })
   }
 
 
@@ -46,14 +61,8 @@ export class HomeComponent implements OnInit {
   }
 
   get search1(): string {
-    return this.searchForm?.controls.search.value;
-  }
-
-  set searchTerm(_searchTerm: string) {
-    this.searchForm?.controls.searchTerm.setValue(_searchTerm);
-    console.log(    this.searchForm?.controls.searchTerm.setValue(_searchTerm)
-    )
-
+    let all = this.fromAppSearch
+    return this.searchForm?.controls.search.value || all;
   }
 
   doSearch(): any {
@@ -74,6 +83,15 @@ export class HomeComponent implements OnInit {
     })
   }
 
+  female(): any {
+    this.fromAppSearch = this.allUsers.filter(f => {
+      console.log(f.gender.female, 'IT IS I')
+      return f.gender.female;
+
+    })
+
+  // }
+
 
 
   // getInfo(userSearchTerm?: any, isFirstTime?: boolean): any{
@@ -93,6 +111,9 @@ export class HomeComponent implements OnInit {
   // }
 
   
+  }
 
-
+  get allUsersLocalz(){
+    return this.allUsersLocal
+  }
 }

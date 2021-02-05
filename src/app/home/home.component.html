@@ -22,7 +22,7 @@
             </mat-form-field>
             <mat-slide-toggle [formControl]="disableSelect">Hide Country</mat-slide-toggle>
 
-            <mat-card *ngFor="let item of allUsersLocal | filter: search1">
+            <mat-card *ngFor="let item of allUsersLocal | filter: search1, fromAppSearch">
                 <mat-card-header>
                     <figure>
                         <img src='{{item.picture.medium}}' alt="">
