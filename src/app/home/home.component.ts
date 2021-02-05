@@ -1,5 +1,5 @@
 import { ApiService } from './../apiservice.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { finalize } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
@@ -23,9 +23,13 @@ export class HomeComponent implements OnInit {
   disableSelect = new FormControl(false);
   allCountry: any[] = [];
 
+  @Input() public found: string;
+
   constructor(private formbuilder: FormBuilder, private service: ApiService) {
     this._searchTerm = localStorage.getItem('searchTerm');
-    console.log(this._searchTerm)
+    this.found = this._searchTerm;
+    console.log(this.found, 'eki');
+
   }
 
   ngOnInit(): void {
@@ -39,7 +43,6 @@ export class HomeComponent implements OnInit {
       search: ['', Validators.required],
       country: ['']
     });
-
   }
 
   get search1(): string {
