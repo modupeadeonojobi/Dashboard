@@ -37,6 +37,7 @@ export class HomeComponent implements OnInit {
     this.sharedservice.teacherMessage$
       .subscribe(message => {
         this.fromAppSearch = message;
+        // to move the make the male and fomale button work, use this code.
       //   if (this.fromAppSearch === 'female') {
       //    this.allUsers = this.allUsers.filter(r =>{return r.gender ==='female'})
       //     this.allUsersLocal = this.allUsers;
