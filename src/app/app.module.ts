@@ -1,7 +1,7 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
-import {  MatFormFieldModule  } from '@angular/material/form-field';
-import { MatInputModule  } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 import { MatIconModule } from '@angular/material/icon';
@@ -14,13 +14,15 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 // import { MatOptionModule } from '@angular/material/core';
-import { MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule, MatSlideToggle } from '@angular/material/slide-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FemaleComponent } from './female/female.component';
 import { MaleComponent } from './male/male.component';
 import { FilterPipe } from './filter.pipe';
+import { JwPaginationModule } from 'jw-angular-pagination';
+import { UserDetailsComponent } from './user-details/user-details.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { FilterPipe } from './filter.pipe';
     FemaleComponent,
     MaleComponent,
     FilterPipe,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +50,8 @@ import { FilterPipe } from './filter.pipe';
     ReactiveFormsModule,
     MatCardModule,
     HttpClientModule,
+    JwPaginationModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

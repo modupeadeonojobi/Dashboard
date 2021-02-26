@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,13 +6,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./female.component.css']
 })
 export class FemaleComponent implements OnInit {
-  url: string = 'https://jsonplaceholder.typicode.com/users';
+
+  allUsers: any = [];
+  femaleUsers: any[] = [];
 
 
-  constructor(private http: HttpClient) {
-    
-   }
+  constructor() {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // console.log(all)
 
-} 
+    // this.allUsers = JSON.parse(localStorage.getItem('sessio')) || null;
+
+
+
+    // console.log(this.allUsers.results)
+
+    // if (this.allUsers.gender === 'female') {
+    // this.femaleUsers.push(this.allUsers)
+    // console.log(this.allUsers)
+    // }
+  }
+
+}
+
+

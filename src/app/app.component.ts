@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   searchForm: FormGroup;
 
   allUsers: any;
-  
+
 
   constructor(private sharedService: SharedService, private FormBuilder: FormBuilder, private router: Router) {
     this.searchForm = this.FormBuilder.group({
@@ -44,21 +44,28 @@ export class AppComponent implements OnInit {
       const appsearchItem = this.searchForm.controls.searchItem.value;
       localStorage.setItem('searchTerm', JSON.stringify(appsearchItem));
       this.searchForm.reset();
-      this.sharedService.sendMessage(appsearchItem); 
+      this.sharedService.sendMessage(appsearchItem);
 
       return
     }
   }
 
+  allUser(): any {
+    this.router.navigate(['/home'])
+  }
+
   female(): any {
     let genderF = "female";
     this.sharedService.sendMessage(genderF);
+    this.router.navigate(["/female"]);
+
 
   }
 
   male(): any {
     let genderM = "male";
     this.sharedService.sendMessage(genderM)
+    this.router.navigate(["/male"]);
   }
 
   next(): any {

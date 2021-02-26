@@ -1,4 +1,4 @@
-<!-- <div class="wrapper">
+<div class="wrapper">
     <div class="container">
         <div class="fst">
             <h3 class="pt-4">Female List</h3>
@@ -16,23 +16,23 @@
                 <mat-option value="america">America</mat-option>
             </mat-select>
         </mat-form-field>
-        <mat-slide-toggle>Show Country</mat-slide-toggle>
+        <mat-slide-toggle>Hide Country</mat-slide-toggle>
 
         <mat-card>
-            <mat-card-header>
-                <figure>                 
-                    <img src='' alt="">
+            <mat-card-header *ngFor="let item of allUsers">
+                <figure>
+                    <img src="" alt="">
                 </figure>
-                <mat-card-title>Mary White</mat-card-title>
-                <mat-card-subtitle>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;iiiiiiiiiiiiiiiiihhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh <i> </i>
+                <mat-card-title>{{ item.gender}} </mat-card-title>
+                <mat-card-subtitle> <i>lllllllllllllllllllllll mmmmmmmmmmmmmmmmmmmmmmmm bbbbbbbbbbbbbbbbbbbbb </i>
                 </mat-card-subtitle>
             </mat-card-header>
             <mat-card-content>
                 <span>
-                    <mat-icon>email</mat-icon>000o8ybgdrtd 
+                    <mat-icon>email</mat-icon> kkkkkkkkkkkkk
                 </span>
                 <span>
-                    <mat-icon>phone</mat-icon>iyfgydtfygftf
+                    <mat-icon>phone</mat-icon>kkkkkkkkkkkk
                 </span>
                 <button mat-mini-fab color="accent">
                     <mat-icon>arrow_forward</mat-icon>
@@ -41,15 +41,7 @@
         </mat-card>
 
     </div>
-    
+
     <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
     </mat-paginator>
-</div> -->
-
-
-<!-- <div class="md-form">
-    <input type="search" [(ngModel)]="searchText" placeholder="Search text">
-  </div>
-  <ul *ngFor="let user of usersArray | filter: searchText">
-    <li>{{user}}</li>
-  </ul> -->
+</div>

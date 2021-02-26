@@ -4,14 +4,15 @@
             <p class="greeting">Hello, <span>Emerald</span></p>
             <p class="info">Welcome to your dashboard, kindly sort through the user base</p>
         </div>
-    
+
         <form class="form-inline" (ngSubmit)="onSubmit()" [formGroup]="searchForm">
-            <input formControlName="searchItem" class="form-control" size="44"  type="search" placeholder="Find a user" aria-label="Search">
+            <input formControlName="searchItem" class="form-control" size="44" type="search" placeholder="Find a user"
+                aria-label="Search">
         </form>
-       
+
         <p class="user mt-3">Show Users</p>
         <div class="example-button-container">
-            <button mat-fab color="accent" aria-label="icon">
+            <button mat-fab color="accent" aria-label="icon" (click)="allUser()">
                 <mat-icon>groups</mat-icon>
             </button>
             <small>All Users</small>
@@ -27,7 +28,6 @@
         <div class="router">
             <router-outlet></router-outlet>
         </div>
-        
+
     </div>
 </div>
-

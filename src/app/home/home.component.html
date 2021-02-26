@@ -1,7 +1,7 @@
 <div class="wrapper">
     <div class="container">
         <div class="fst">
-            <h3 class="pt-4">User List</h3>
+            <h3 class="pt-4">All Users</h3>
             <p>Filter by</p>
         </div>
 
@@ -38,10 +38,10 @@
                         <mat-icon>email</mat-icon> {{item.email}}
                     </span>
                     <span>
-                        <mat-icon>phone</mat-icon>{{item.email}}
+                        <mat-icon>phone</mat-icon>{{item.phone}}
                     </span>
                     <button mat-mini-fab color="accent">
-                        <mat-icon>arrow_forward</mat-icon>
+                        <mat-icon (click)="moreDetails(item)">arrow_forward</mat-icon>
                     </button>
                 </mat-card-content>
             </mat-card>

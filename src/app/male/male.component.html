@@ -4,44 +4,49 @@
             <h3 class="pt-4">Male List</h3>
             <p>Filter by</p>
         </div>
-        <mat-form-field floatLabel="auto" appearance="standard">
-            <mat-label>Search</mat-label>
-            <input matInput>
-            <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
-        <mat-form-field>
-            <mat-label>Country</mat-label>
-            <mat-select>
-                <mat-option value="nigeria">Nigeria</mat-option>
-                <mat-option value="america">America</mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-slide-toggle>Show Country</mat-slide-toggle>
 
-        <mat-card>
-            <mat-card-header>
-                <figure>                 
-                    <img src="" alt="">
-                </figure>
-                <mat-card-title>John Doe</mat-card-title>
-                <mat-card-subtitle> <i>lllllllllllllllllllllll mmmmmmmmmmmmmmmmmmmmmmmm bbbbbbbbbbbbbbbbbbbbb </i>
-                </mat-card-subtitle>
-            </mat-card-header>
-            <mat-card-content>
-                <span>
-                    <mat-icon>email</mat-icon> kkkkkkkkkkkkk
-                </span>
-                <span>
-                    <mat-icon>phone</mat-icon>kkkkkkkkkkkk
-                </span>
-                <button mat-mini-fab color="accent">
-                    <mat-icon>arrow_forward</mat-icon>
-                </button>
-            </mat-card-content>
-        </mat-card>
+        <form [formGroup]="searchForm">
+            <mat-form-field floatLabel="auto" appearance="standard">
+                <mat-label>Search</mat-label>
+                <input matInput formControlName="search">
+                <mat-icon matSuffix>search</mat-icon>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Country</mat-label>
+                <mat-select formControlName="country" (valueChange)="onSelectionChange($event)"
+                    [disabled]="disableSelect.value">
+                    <div *ngFor="let item of allCountry">
+                        <mat-option [value]="item.location.country">{{item.location.country}}</mat-option>
+                    </div>
+                </mat-select>
+            </mat-form-field>
+            <mat-slide-toggle [formControl]="disableSelect">Hide Country</mat-slide-toggle>
+
+            <mat-card *ngFor="let item of allUsersLocal | filter: search1">
+                <mat-card-header>
+                    <figure>
+                        <img src='{{item.picture.medium}}' alt="">
+                    </figure>
+                    <mat-card-title> {{item.name.first}} {{item.name.last}}</mat-card-title>
+                    <mat-card-subtitle> <i>{{item.location.street.number}} {{item.location.street.name}},
+                            {{item.location.city}}, {{item.location.state}}, {{item.location.country}}
+                        </i>
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <span>
+                        <mat-icon>email</mat-icon> {{item.email}}
+                    </span>
+                    <span>
+                        <mat-icon>phone</mat-icon>{{item.phone}}
+                    </span>
+                    <button mat-mini-fab color="accent">
+                        <mat-icon (click)="moreDetails(item)">arrow_forward</mat-icon>
+                    </button>
+                </mat-card-content>
+            </mat-card>
+        </form>
 
     </div>
-    
-    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]">
-    </mat-paginator>
+
 </div>

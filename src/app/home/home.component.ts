@@ -1,8 +1,9 @@
+import { Router } from '@angular/router';
 import { SharedService } from './../shared.service';
 import { ApiService } from './../apiservice.service';
 import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { finalize } from 'rxjs/operators';
+import { finalize, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 
 
@@ -26,8 +27,11 @@ export class HomeComponent implements OnInit {
 
   fromAppSearch: any;
 
+  public static oneUser: any = []
 
-  constructor(private sharedservice: SharedService, private formbuilder: FormBuilder, private service: ApiService) {
+
+  constructor(private sharedservice: SharedService, private formbuilder: FormBuilder,
+    private service: ApiService, private router: Router) {
     this._searchTerm = localStorage.getItem('searchTerm');
   }
 
@@ -38,18 +42,18 @@ export class HomeComponent implements OnInit {
       .subscribe(message => {
         this.fromAppSearch = message;
         // to move the make the male and fomale button work, use this code.
-      //   if (this.fromAppSearch === 'female') {
-      //    this.allUsers = this.allUsers.filter(r =>{return r.gender ==='female'})
-      //     this.allUsersLocal = this.allUsers;
-      //   } 
-      //   if (this.fromAppSearch === 'male') {
-      //     this.allUsers = this.allUsers.filter(t =>{return t.gender ==='male'})
-      //     this.allUsersLocal = this.allUsers;
-      //   } 
-      //   if (this.fromAppSearch = message) {
-      //     this.allUsersLocal = this.allUsers;
+        //   if (this.fromAppSearch === 'female') {
+        //    this.allUsers = this.allUsers.filter(r =>{return r.gender ==='female'})
+        //     this.allUsersLocal = this.allUsers;
+        //   } 
+        //   if (this.fromAppSearch === 'male') {
+        //     this.allUsers = this.allUsers.filter(t =>{return t.gender ==='male'})
+        //     this.allUsersLocal = this.allUsers;
+        //   } 
+        //   if (this.fromAppSearch = message) {
+        //     this.allUsersLocal = this.allUsers;
 
-      //   }
+        //   }
       })
   }
 
@@ -67,14 +71,16 @@ export class HomeComponent implements OnInit {
   }
 
   doSearch(): any {
-    for (let i = 1; i <= 4; i++) {
-      this.service.get_('')
-        .subscribe((data: any) => {
-          this.allUsers.push(data.results[0])
-          this.allUsersLocal = this.allUsers
-          this.allCountry.push(data.results[0])
+    this.service.get_('')
+      .subscribe((response: any) => {
+        sessionStorage.setItem('usersData', JSON.stringify(response.results));
+        response.results.forEach((result: any) => {
+          this.allUsers.push(result);
+          this.allUsersLocal = this.allUsers;
+          this.allCountry = this.allUsers;
         })
-    }
+
+      });
   }
 
 
@@ -88,10 +94,13 @@ export class HomeComponent implements OnInit {
     this.fromAppSearch = this.allUsers.filter(f => {
       console.log(f.gender.female, 'IT IS I')
       return f.gender.female;
-
     })
+  }
 
-  // }
+  moreDetails(id: any): any {
+    this.sharedservice.itemCollected = id
+    this.router.navigate(['/more'])
+  }
 
 
 
@@ -111,10 +120,10 @@ export class HomeComponent implements OnInit {
   //   this.getInfo(this.search, false)
   // }
 
-  
-  }
 
-  get allUsersLocalz(){
+
+
+  get allUsersLocalz() {
     return this.allUsersLocal
   }
 }
