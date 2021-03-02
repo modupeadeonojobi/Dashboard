@@ -1,3 +1,6 @@
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { SharedService } from './../shared.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,27 +11,51 @@ import { Component, OnInit } from '@angular/core';
 export class FemaleComponent implements OnInit {
 
   allUsers: any = [];
-  femaleUsers: any[] = [];
+  allUsersLocal: any;
+  allCountry: any[] = [];
+
+  disableSelect = new FormControl(false);
+
+  searchForm!: FormGroup;
 
 
-  constructor() {
+  constructor(private SharedService: SharedService,
+    private router: Router, private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
-    // console.log(all)
+    this.initForm();
+    this.femaleUsers();
+  }
 
-    // this.allUsers = JSON.parse(localStorage.getItem('sessio')) || null;
+  initForm(): any {
+    return this.searchForm = this.fb.group({
+      search: ['', Validators.required],
+      country: ['']
+    })
+  }
 
+  get search1(): string {
+    return this.searchForm?.controls.search.value;
+  }
 
+  femaleUsers(): any {
+    this.allUsers = sessionStorage.getItem('usersData');
+    this.allUsers = JSON.parse(this.allUsers);
+    this.allUsers = this.allUsers.filter((r: any) => { return r.gender == 'female' })
+    this.allUsersLocal = this.allUsers;
+    this.allCountry = this.allUsers;
+  }
 
-    // console.log(this.allUsers.results)
+  onSelectionChange($event: any) {
+    this.allUsersLocal = this.allUsers.filter((r: any) => {
+      return r.location.country == $event
+    })
+  }
 
-    // if (this.allUsers.gender === 'female') {
-    // this.femaleUsers.push(this.allUsers)
-    // console.log(this.allUsers)
-    // }
+  moreDetails(id: any): any {
+    this.SharedService.itemCollected = id;
+    this.router.navigate(['/more'])
   }
 
 }
-
-

@@ -18,6 +18,12 @@ div h3 {
   font-size: 1.3rem;
 }
 
+.spinner-grow {
+  position: absolute;
+  left: 20rem;
+  top: 18rem;
+}
+
 .mat-form-field {
   color: #95959a;
   margin-right: 4rem;

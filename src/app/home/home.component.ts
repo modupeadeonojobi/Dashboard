@@ -1,10 +1,8 @@
 import { Router } from '@angular/router';
 import { SharedService } from './../shared.service';
 import { ApiService } from './../apiservice.service';
-import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { finalize, map } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -26,13 +24,15 @@ export class HomeComponent implements OnInit {
   allCountry: any[] = [];
 
   fromAppSearch: any;
+  loading: boolean = true;
+
 
   public static oneUser: any = []
 
 
   constructor(private sharedservice: SharedService, private formbuilder: FormBuilder,
     private service: ApiService, private router: Router) {
-    this._searchTerm = localStorage.getItem('searchTerm');
+    this._searchTerm = sessionStorage.getItem('searchTerm');
   }
 
   ngOnInit(): void {
@@ -41,19 +41,6 @@ export class HomeComponent implements OnInit {
     this.sharedservice.teacherMessage$
       .subscribe(message => {
         this.fromAppSearch = message;
-        // to move the make the male and fomale button work, use this code.
-        //   if (this.fromAppSearch === 'female') {
-        //    this.allUsers = this.allUsers.filter(r =>{return r.gender ==='female'})
-        //     this.allUsersLocal = this.allUsers;
-        //   } 
-        //   if (this.fromAppSearch === 'male') {
-        //     this.allUsers = this.allUsers.filter(t =>{return t.gender ==='male'})
-        //     this.allUsersLocal = this.allUsers;
-        //   } 
-        //   if (this.fromAppSearch = message) {
-        //     this.allUsersLocal = this.allUsers;
-
-        //   }
       })
   }
 
@@ -73,9 +60,12 @@ export class HomeComponent implements OnInit {
   doSearch(): any {
     this.service.get_('')
       .subscribe((response: any) => {
-        sessionStorage.setItem('usersData', JSON.stringify(response.results));
         response.results.forEach((result: any) => {
+          this.loading = false;
+
           this.allUsers.push(result);
+          sessionStorage.setItem('usersData', JSON.stringify(this.allUsers));
+
           this.allUsersLocal = this.allUsers;
           this.allCountry = this.allUsers;
         })
@@ -92,7 +82,6 @@ export class HomeComponent implements OnInit {
 
   female(): any {
     this.fromAppSearch = this.allUsers.filter(f => {
-      console.log(f.gender.female, 'IT IS I')
       return f.gender.female;
     })
   }
@@ -101,27 +90,6 @@ export class HomeComponent implements OnInit {
     this.sharedservice.itemCollected = id
     this.router.navigate(['/more'])
   }
-
-
-
-  // getInfo(userSearchTerm?: any, isFirstTime?: boolean): any{
-  //   let searchTerm = localStorage.getItem('searchTerm');
-
-  //   if(userSearchTerm === searchTerm && !isFirstTime) {
-  //     this.dataItem = localStorage.getItem('searchData');
-  //     return;
-  //   }
-  //   else{
-  //     this.doSearch();
-  //   }
-  // }
-
-  // handleSearch(): any {
-  //   this.getInfo(this.search, false)
-  // }
-
-
-
 
   get allUsersLocalz() {
     return this.allUsersLocal

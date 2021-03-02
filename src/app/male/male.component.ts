@@ -1,7 +1,7 @@
 import { SharedService } from './../shared.service';
-import { ApiService } from './../apiservice.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-male',
@@ -14,14 +14,12 @@ export class MaleComponent implements OnInit {
 
   searchForm!: FormGroup;
 
-
-
-  allUsers: any[] = [];
+  allUsers: any = [];
   allUsersLocal: any[] = [];
   allCountry: any[] = [];
 
-  constructor(private service: ApiService, private fb: FormBuilder,
-    private SharedService: SharedService) {
+  constructor(private fb: FormBuilder,
+    private SharedService: SharedService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -41,33 +39,22 @@ export class MaleComponent implements OnInit {
   }
 
   maleUsers(): any {
-    this.service.get_('')
-      .subscribe((response: any) => {
-        response.results.forEach((result: any) => {
-          if (result.gender === 'male') {
-            this.allUsers.push(result);
-            this.allUsersLocal = this.allUsers;
-
-            this.allCountry = this.allUsers
-          }
-
-
-          // this.allUsersLocal = this.allUsers;
-          // this.allCountry = this.allUsers;
-        })
-        // const allUsers = response.results
-        // if (response)
-      });
+    this.allUsers = sessionStorage.getItem('usersData');
+    this.allUsers = JSON.parse(this.allUsers);
+    this.allUsers = this.allUsers.filter((r: any) => { return r.gender == 'male' })
+    this.allUsersLocal = this.allUsers;
+    this.allCountry = this.allUsers;
   }
 
   onSelectionChange($event: any) {
-    this.allUsersLocal = this.allUsers.filter(r => {
+    this.allUsersLocal = this.allUsers.filter((r: any) => {
       return r.location.country == $event
     })
   }
 
   moreDetails(id: any): any {
-    this.SharedService.maleUser = id;
+    this.SharedService.itemCollected = id;
+    this.router.navigate(['/more'])
   }
 
 }

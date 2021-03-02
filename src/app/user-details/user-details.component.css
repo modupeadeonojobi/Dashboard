@@ -18,6 +18,10 @@
     font-weight: 700;
     font-size: 1.3rem;
   }
+
+  div .md {
+    color: #ff4081;
+  }
   
   .mat-form-field {
     color: #95959a;

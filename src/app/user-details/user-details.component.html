@@ -2,8 +2,8 @@
     <div class="wrapper">
         <div class="container">
             <div class="fst">
-                <h3 class="pt-4">User List</h3>
-                <h4>More Details</h4>
+                <h3 class="pt-4 mb-0">User List</h3>
+                <h4 class="md">More Details</h4>
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci quaerat perferendis recusandae
                     ipsa
@@ -19,28 +19,27 @@
             </div>
 
             <figure>
-                <img src={{moreDetais.picture.large}} alt="">
+                <img src={{moreDetails?.picture?.large}} alt="">
             </figure>
             <div class="content">
-                <h3>{{moreDetais.name.title}} {{moreDetais.name.first}} {{moreDetais.name.last}}</h3>
-                <p>{{moreDetais.location.street.number}} {{moreDetais.location.street.name}},
-                    {{moreDetais.location.state}}, {{moreDetais.location.country}}</p>
+                <h3>{{moreDetails.name.title}} {{moreDetails.name.first}} {{moreDetails.name.last}}</h3>
+                <p>{{moreDetails.location.street.number}} {{moreDetails.location.street.name}},
+                    {{moreDetails.location.state}}, {{moreDetails.location.country}}</p>
                 <span class="email">
-                    <!-- <button mat-flat-button color="accent"> <mat-icon>email</mat-icon> Accent</button> -->
-                    <mat-icon>email</mat-icon> {{moreDetais.email}}
+                    <mat-icon>email</mat-icon> {{moreDetails.email}}
                 </span>
                 <p class="phone">
-                    <mat-icon>phone</mat-icon> {{moreDetais.phone}}
+                    <mat-icon>phone</mat-icon> {{moreDetails.phone}}
                 </p>
                 <p class="cell">
-                    <mat-icon>tty</mat-icon> {{moreDetais.cell}}
+                    <mat-icon>tty</mat-icon> {{moreDetails.cell}}
                 </p>
             </div>
         </div>
     </div>
 </div>
 
-<div>
+<!-- <div>
     <div class="wrapper">
         <div class="container">
             <div class="fst">
@@ -61,23 +60,22 @@
             </div>
 
             <figure>
-                <img src={{moreDetais.picture.large}} alt="">
+                <img src={{maleDetails?.picture?.large}} alt="">
             </figure>
             <div class="content">
-                <h3>{{moreDetais.name.title}} {{moreDetais.name.first}} {{moreDetais.name.last}}</h3>
-                <p>{{moreDetais.location.street.number}} {{moreDetais.location.street.name}},
-                    {{moreDetais.location.state}}, {{moreDetais.location.country}}</p>
+                <h3>{{maleDetails.name.title}} {{maleDetails.name.first}} {{moreDetails.name.last}}</h3>
+                <p>{{maleDetails.location.street.number}} {{maleDetails.location.street.name}},
+                    {{maleDetails.location.state}}, {{maleDetails.location.country}}</p>
                 <span class="email">
-                    <!-- <button mat-flat-button color="accent"> <mat-icon>email</mat-icon> Accent</button> -->
-                    <mat-icon>email</mat-icon> {{moreDetais.email}}
+                    <mat-icon>email</mat-icon> {{maleDetails.email}}
                 </span>
                 <p class="phone">
-                    <mat-icon>phone</mat-icon> {{moreDetais.phone}}
+                    <mat-icon>phone</mat-icon> {{maleDetails.phone}}
                 </p>
                 <p class="cell">
-                    <mat-icon>tty</mat-icon> {{moreDetais.cell}}
+                    <mat-icon>tty</mat-icon> {{maleDetails.cell}}
                 </p>
             </div>
         </div>
     </div>
-</div>
+</div> -->

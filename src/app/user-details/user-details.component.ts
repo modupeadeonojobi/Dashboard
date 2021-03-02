@@ -8,18 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user-details.component.css']
 })
 export class UserDetailsComponent implements OnInit {
-  moreDetais: any;
+  moreDetails: any;
 
   constructor(private SharedService: SharedService, private router: Router) { }
 
   ngOnInit(): void {
-    this.moreDetais = this.SharedService.itemCollected;
 
-    if (Object.keys(this.moreDetais).length === 0) {
+    this.moreDetails = this.SharedService.itemCollected;
+
+    if (Object.keys(this.moreDetails).length === 0) {
       this.router.navigate(['/home'])
     } else {
-      this.moreDetais = this.SharedService.itemCollected;
+      this.moreDetails = this.SharedService.itemCollected;
     }
+
   }
+
+
 
 }

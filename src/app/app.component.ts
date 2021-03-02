@@ -1,7 +1,6 @@
 import { SharedService } from './shared.service';
-import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { MatFormFieldControl } from '@angular/material/form-field';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 
@@ -17,6 +16,7 @@ export class AppComponent implements OnInit {
   searchForm: FormGroup;
 
   allUsers: any;
+  local: any;
 
 
   constructor(private sharedService: SharedService, private FormBuilder: FormBuilder, private router: Router) {
@@ -24,25 +24,30 @@ export class AppComponent implements OnInit {
       searchItem: ['', Validators.required]
     });
 
-    // this.SearchForm = fb_.group({
-    //   "search": ['']
-    // });
-
+    this.local = sessionStorage.getItem('setValue');
 
   }
 
-  // initializeForm(): any {
-
-  // }
-
   ngOnInit(): void {
+    this.local.toString();
+    this.local = JSON.parse(this.local)
+
+    if (this.local == "male") {
+      this.router.navigate(['/male']);
+    } else if (this.local == "female") {
+      this.router.navigate(['/female']);
+    } else if (this.local == "allUsers") {
+      this.router.navigate(['/home']);
+    }
+
     this.onSubmit();
+
   }
 
   onSubmit(): any {
     if (this.searchForm.valid) {
       const appsearchItem = this.searchForm.controls.searchItem.value;
-      localStorage.setItem('searchTerm', JSON.stringify(appsearchItem));
+      sessionStorage.setItem('searchTerm', JSON.stringify(appsearchItem));
       this.searchForm.reset();
       this.sharedService.sendMessage(appsearchItem);
 
@@ -51,20 +56,21 @@ export class AppComponent implements OnInit {
   }
 
   allUser(): any {
+    sessionStorage.setItem('setValue', JSON.stringify('allUsers'));
     this.router.navigate(['/home'])
   }
 
   female(): any {
     let genderF = "female";
     this.sharedService.sendMessage(genderF);
+    sessionStorage.setItem('setValue', JSON.stringify(genderF))
     this.router.navigate(["/female"]);
-
-
   }
 
   male(): any {
     let genderM = "male";
     this.sharedService.sendMessage(genderM)
+    sessionStorage.setItem('setValue', JSON.stringify(genderM))
     this.router.navigate(["/male"]);
   }
 
